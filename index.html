@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ToDo-TaskManager</title>
+  <style>
+    body {
+      font-family: Verdana, Geneva, Tahoma, sans-serif, sans-serif;
+      font-size: larger;
+      font-weight: bold;
+      font-style: oblique;
+      background-image: url('todo_background.png');    
+      
+      /* Propiedades adicionales para que la imagen de fondo se vea bien */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      color: #333;
+    }
+    h1 {
+      margin-top: 40px;
+      color: rgb(90, 25, 9);
+    }
+    .todo-container {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      width: 300px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    input {
+      width: 70%;
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      outline: none;
+    }
+    button {
+      background: #ff80ab;
+      color: white;
+      border: none;
+      padding: 8px 10px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 15px;
+    }
+    li {
+      background: #fff3f8;
+      padding: 8px;
+      margin-bottom: 8px;
+      border-radius: 6px;
+      display: flex;
+      justify-content: space-between;
+    }
+  </style>
+</head>
+<body>
+  <h1>📝 ToDo - Notas</h1>
+  <div class="todo-container">
+    <input id="taskInput" type="text" placeholder="Nueva tarea..." />
+    <button onclick="addTask()">Agregar</button>
+    <ul id="taskList"></ul>
+  </div>
+
+  <script>
+    function addTask() {
+      const input = document.getElementById("taskInput");
+      const list = document.getElementById("taskList");
+      if (input.value.trim() === "") return;
+      const li = document.createElement("li");
+      li.textContent = input.value;
+      li.onclick = () => li.remove();
+      list.appendChild(li);
+      input.value = "";
+    }
+  </script>
+</body>
+</html>
